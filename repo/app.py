@@ -17,15 +17,6 @@ def base64_convert(base64_image):
     except:
         return None
 
-'''
-TODO: make this more intersting than just a CRUD API w/ image-id pairs.
-- Add image titles and/or keywords & allow querying API with those?
-- Allow multiple ids in query at once?
-- Make more repository-y?
-    - Multiple clients push to the server and can pull eachother's changes?
-    - Allow saving images w/ directory structure?
-- Store images on GCloud with the mongo objects storing those URLs?
-'''
 
 @app.route('/images', methods=['GET', 'DELETE', 'PUT', 'POST'])
 def images():

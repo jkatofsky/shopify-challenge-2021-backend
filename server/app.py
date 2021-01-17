@@ -25,11 +25,6 @@ TODO: make this more intersting than just a CRUD API w/ image-id pairs.
     - Multiple clients push to the server and can pull eachother's changes?
     - Allow saving images w/ directory structure?
 - Store images on GCloud with the mongo objects storing those URLs?
-- 
-
-TODO: implement the client stuff.
-Want it to be a command line tool but not sure about the details yet.
-The client could change a lot depending on the direction I take the project.
 '''
 
 @app.route('/images', methods=['GET', 'DELETE', 'PUT', 'POST'])

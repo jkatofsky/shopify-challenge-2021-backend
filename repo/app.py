@@ -13,8 +13,10 @@ db.db.init_app(app)
 
 def base64_convert(base64_image):
     try:
-        io.BytesIO(base64.decodebytes(bytes(base64_image, encoding="ascii")))
+        return io.BytesIO(base64.decodebytes(bytes(base64_image, encoding="ascii")))
     except:
+        import traceback
+        traceback.print_exc()
         return None
 
 

@@ -4,7 +4,7 @@ db = MongoEngine()
 
 
 class Image(db.Document):
-    image = db.ImageField(required=True)
+    image = db.FileField(required=True)
 
 
 def read(id):
@@ -22,7 +22,7 @@ def update(data: dict):
     image = image_obj.image.read()
     
     if data['image'] != image:
-        image_obj.image.put(data['image'], content_type='image/jpg')
+        image_obj.image.replace(data['image'], content_type='image/jpg')
 
     image_obj.save()
 

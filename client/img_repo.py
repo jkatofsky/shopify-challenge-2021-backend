@@ -42,7 +42,7 @@ def main():
 
     if args.action in ['upload', 'update']:
         with open(args.i, "rb") as image_file:
-            encoded_img_str = base64.b64encode(image_file.read())
+            encoded_img_str = base64.b64encode(image_file.read()).decode('ascii')
 
             if args.action == 'upload':
                 response = requests.post(repo_address, 
@@ -60,9 +60,10 @@ def main():
 
     if not response.status_code == 200:
         print(response.text)
-    if response.headers['content-type'].startswith('image'):
+    elif response.headers['content-type'].startswith('image'):
         with open(args.o, 'wb') as image_fp:
             image_fp.write(response.content)
+            print('Successfully downloaded image %s' % (args.id))
     else:
         data = response.json()
         print('Action \"%s\" successfully completed to image %s' % (args.action, data['id']))
